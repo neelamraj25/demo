@@ -37,44 +37,45 @@ class GroupModel {
 
   factory GroupModel.fromJson(Map<String, dynamic> json) {
     return GroupModel(
-      groupId: json['groupId'],
-      groupCode: json['groupCode'],
-      groupName: json['groupName'],
-      totalMembers: json['totalMembers'],
-      totalMonths: json['totalMonths'],
-      startDate: json['startDate'],
-      endDate: json['endDate'],
-      amount: json['amount'],
-      groupType: json['groupType'],
-      groupStatus: json['groupStatus'],
+      groupId: json['groupId'].toString(),
+      groupCode: json['groupCode'].toString(),
+      groupName: json['groupName'].toString(),
+      totalMembers: json['totalMembers'].toString(),
+      totalMonths: json['totalMonths'].toString(),
+      startDate: json['startDate'].toString(),
+      endDate: json['endDate'].toString(),
+      amount: json['amount'].toString(),
+      groupType: GroupTypeExtension.fromString(json['groupType']),
+      groupStatus: json['groupStatus'].toString(),
       createdBy: json['createdBy'],
-      createdDate: json['createdDate'],
+      createdDate: json['createdDate'].toString(),
       updatedBy: json['updatedBy'],
-      updatedDate: json['updatedDate'],
-      isGroupAdmin: json['isGroupAdmin'],
-      groupAdmin: json['groupAdmin'],
+      updatedDate: json['updatedDate']?.toString(),
+      isGroupAdmin: json['isGroupAdmin'].toString(),
+      groupAdmin: json['groupAdmin'].toString(),
     );
   }
 
-  Map<String,dynamic> toJson(){
-    return {
-      'groupId':groupId,
-      'groupCode':groupCode,
-      'groupName':groupName,
-      'totalMembers':totalMembers,
-      'totalMonths':totalMonths,
-      'startDate':startDate,
-      'endDate':endDate,
-      'amount':amount,
-      'groupType':groupType,
-      'groupStatus':groupStatus,
-      'createdBy':createdBy,
-   'createdDate':createdDate,
-      'updatedBy':updatedBy,
-      'isGroupAdmin':isGroupAdmin,
-      'groupAdmin':groupAdmin,
-    };
-  }
+ Map<String, dynamic> toJson() {
+  return {
+    'groupId': groupId,
+    'groupCode': groupCode,
+    'groupName': groupName,
+    'totalMembers': totalMembers,
+    'totalMonths': totalMonths,
+    'startDate': startDate,
+    'endDate': endDate,
+    'amount': amount,
+    'groupType': groupType.name,
+    'groupStatus': groupStatus,
+    'createdBy': createdBy,
+    'createdDate': createdDate,
+    'updatedBy': updatedBy,
+    'isGroupAdmin': isGroupAdmin,
+    'groupAdmin': groupAdmin,
+  };
+}
+
 }
 
 enum GroupType { random, maunal }

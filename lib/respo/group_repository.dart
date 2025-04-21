@@ -24,8 +24,17 @@ class GroupRepository {
   }
 
 
-  Future<void> addGroup(GroupModel group) async{
-await _dio.post("https://kpa.v3m.in/api/UserGroup/AddUpdateUserGroup",data: group.toJson());
-
+Future<void> addGroup(GroupModel group) async {
+  try {
+    final response = await _dio.post(
+      "https://kpa.v3m.in/api/UserGroup/AddUpdateUserGroup",
+      data: group.toJson(),
+    );
+    print("Response: ${response.data}");
+  } catch (e) {
+    print("API Error: $e");
+    rethrow; 
   }
+}
+
 }

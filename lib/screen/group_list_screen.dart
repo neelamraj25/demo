@@ -2,6 +2,7 @@ import 'package:demo_applications/bloc/group_bloc.dart';
 import 'package:demo_applications/bloc/group_event.dart';
 import 'package:demo_applications/bloc/group_state.dart';
 import 'package:demo_applications/screen/group_card_widget.dart';
+import 'package:demo_applications/screen/new_group_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -56,9 +57,14 @@ class _MyGroupeListState extends State<MyGroupeList> {
         },
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {},
-        label: const Text("New Group"),
-        icon: Icon(Icons.add),
+       onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const NewGroupScreen()),
+          );
+        },
+        label: const Text("New Group",style: TextStyle(color: Colors.white),),
+        icon: Icon(Icons.add,color: Colors.white,),
         backgroundColor: const Color.fromARGB(255, 114, 14, 7),
       ),
     );

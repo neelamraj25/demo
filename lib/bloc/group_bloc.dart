@@ -18,8 +18,12 @@ class GroupBloc extends Bloc<GroupEvent,GroupState> {
       final groups=await repository.fetchgGroups(event.userId);
       print('group $groups');
       emit(GroupLoaded(groups));
-    }catch(e){
-      emit(GroupError('Failed to fetch groups'));
+    }
+     catch(e){
+  print('Error fetching groups: $e');
+  emit(GroupError('Failed to fetch groups'));
+
+
     }
   }
 
